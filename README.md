@@ -26,3 +26,5 @@ The above preprocessing step changed the shape of all images to (3, 256, 512). T
 The implementation of the above algorithm is done using PyTorch. The dataloder for the custom image dataset is taken from the official PyTorch documentation.
 
 ## Training 
+
+The training was done using Google Colab using CUDA GPU.
