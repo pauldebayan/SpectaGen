@@ -15,10 +15,11 @@ The above preprocessing step changed the shape of all images to (3, 256, 512). T
 ```
 1. Train the Generator:
     (i) Take a mini-batch of random noise vectors and generate a mini-batch of fake images
-    (ii) Compute the loss for the generated image by passing  the image to the Discriminator. Backpropagate the loss to update the weights for Generator. 
-
-2. Train the Discriminator
+    (ii) Compute the loss for the generated image by passing  the image to the Discriminator.
+    Backpropagate the loss to update the weights for Generator. 
+3. Train the Discriminator
     (i) Take a random mini-batch of real images
     (ii) Take a mini-batch of random noise vectors and generate a mini-batch of fake images
-    (iii) Compute total loss for both real images and fake images. Backpropagate the total error and update weights for the Discriminator
+    (iii) Compute total loss for both real images and fake images.
+    Backpropagate the total error and update weights for the Discriminator
 ```
