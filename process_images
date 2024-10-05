@@ -3,6 +3,5 @@ IFS=$'\n'
 for file in *.jpg; do
     convert "$file" -background white -flatten -resize 512x256\! "specs$counter.jpg"
     rm "$file"
-    #echo "emoji$counter.jpg", 1 >> labels.csv
     counter=$((counter + 1))
 done
