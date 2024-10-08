@@ -1,7 +1,7 @@
 counter=1
 IFS=$'\n'
 for file in *.jpg; do
-    convert "$file" -background white -flatten -resize 512x256\! "specs$counter.jpg"
+    convert "$file" -gravity center -background white -extent 512x512 "specs$counter.jpg"
     rm "$file"
     counter=$((counter + 1))
 done
