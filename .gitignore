@@ -1,2 +1,3 @@
 spectacle_dataset
 generator.pt
+generator.onnx

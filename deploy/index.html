@@ -1,0 +1,68 @@
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js" type="text/javascript"></script>
+
+<body>
+
+    <div onclick="genImage()" style="border: solid 2px red;"> <canvas width="500px" height="500px" id="canvas"></canvas></div>
+
+    <script>
+
+      const canvas = document.getElementById("canvas");
+      const context = canvas.getContext("2d");
+      
+
+      function float32ToImageData(floatArray, width, height) {
+          // Create Uint8ClampedArray from Float32Array, scaling from [0, 1] to [0, 255]
+          const clampedArray = new Uint8ClampedArray(width * height * 4);  // *4 for RGBA
+
+          for (let i = 0; i < width * height; i++) {
+              const value = Math.floor(floatArray[i] * 255);  // Scale to [0, 255]
+              clampedArray[i * 4] = value;     // R
+              clampedArray[i * 4 + 1] = value; // G
+              clampedArray[i * 4 + 2] = value; // B
+              clampedArray[i * 4 + 3] = 255;   // Alpha (fully opaque)
+          }
+
+          return new ImageData(clampedArray, width, height);
+      }
+
+
+      async function genImage(){
+
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        const session = await ort.InferenceSession.create('./generator.onnx');
+        console.log(session.inputNames); 
+
+
+        // Generate a 1x512 tensor with values sampled from a normal distribution
+        //const tensor = tf.randomNormal([1, 512]);
+        const tensor = tf.randomNormal([1, 512], 0, 1);
+        // tensor = tensor.clipByValue(-3, 3);
+
+        tensor.data().then(async noise => {
+          //const noise = Array.from(noise).map(value => value.toFixed(4));
+          console.log(noise); // Logs the flat array with 512 elements
+
+          print(noise)
+          const noise_tensor = new ort.Tensor('float32', Float32Array.from(noise), [1, 512]);
+
+          console.log("noise_tensor dims", noise_tensor)
+          console.log("noise_tensor dims", noise_tensor.dims)
+
+          const feeds = { "input": noise_tensor };
+
+          const results = await session.run(feeds).then(data => {
+
+            let output = data[56].cpuData;
+            const imageData = float32ToImageData(output, 512, 512);
+
+            context.putImageData(imageData, 0, 0);
+          });
+        });
+        
+      }
+      
+    </script>
+  </body>
+</html>
