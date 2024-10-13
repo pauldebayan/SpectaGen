@@ -1,6 +1,7 @@
 # SpectaGen
+[Live: ](https://spectagen.web.app)
 Generate spectacles using Generative AI  
-Technologies Used: PyTorch, NextJS
+Technologies Used: PyTorch, HTML, Firebase(for Deployment)
 
 
 ## Dataset Creation
@@ -28,4 +29,8 @@ The implementation of the above algorithm is done using PyTorch. The dataloder f
 ## Training 
 
 The training was done using Google Colab using GPU(Cuda).  
-Within 3 epochs the generator was able to generate images of spectacles(with lots of noise) 
+Within 3 epochs the generator was able to generate images of spectacles(with lots of noise). It was trained upto 1000 epochs.
+
+## Deployment
+
+The model is converted to ONNX and deployed to Firebase.
