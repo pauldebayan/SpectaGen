@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    async function generateImage(){
+
+        fetch('http://127.0.0.1:5000/generate')
+        .then(response => {
+            
+            return response.blob();
+        }).then(imageBlob => {
+            const imageObjectURL = URL.createObjectURL(imageBlob);
+            document.getElementById('image').src = imageObjectURL;
+        })
+
+    }
+</script>
+<body>
+    <img src="" id="image" height="512" width="512"/>
+    <button onclick="generateImage()">Generate</button>
+</body>
+</html>
