@@ -1,0 +1,6 @@
+torch
+flask
+PIL
+io
+flask_cors
+numpy
