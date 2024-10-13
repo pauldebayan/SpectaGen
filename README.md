@@ -1,5 +1,5 @@
-# SpectaGen [Live](https://spectagen.web.app)
-
+# SpectaGen 
+[Live](https://spectagen.web.app)  
 Generate spectacles using Generative AI  
 Technologies Used: PyTorch, HTML, Firebase(for Deployment)
 
