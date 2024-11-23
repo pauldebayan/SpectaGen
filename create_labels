@@ -1,4 +1,0 @@
-for i in {1..1000}
-do
-  echo specs$i.jpg, 1 >> labels.csv
-done

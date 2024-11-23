@@ -1,3 +1,4 @@
+*.onnx
 spectacle_dataset
 images_generated
 generator.tflite
