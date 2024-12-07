@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpectaGen</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  
+</body>
+</html>
+<body>
+
+  <div class="generateButtonDiv">
+    <button onclick="genImage()" class="generateButton" id="generateButton" disabled> Model is Loading ... </button>
+  </div>
+
+  <canvas class="canvasImage" width="512px" height="512px" id="canvas"></canvas>
+  <br/>
+  This project is managed by: Debayan Paul <a href="https://www.linkedin.com/in/pauldebayan/">LinkedIn</a>
+  <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+  <script src="script.js"></script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyC_yjJliyiQWSdkMDXPxjcC7MjyENqN5ZA",
+      authDomain: "spectagen.firebaseapp.com",
+      projectId: "spectagen",
+      storageBucket: "spectagen.firebasestorage.app",
+      messagingSenderId: "794154532529",
+      appId: "1:794154532529:web:2070a0ee360fada5f62c90",
+      measurementId: "G-41NGV1Q905"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+</body>
+</html>

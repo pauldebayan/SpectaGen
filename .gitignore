@@ -1,3 +1,5 @@
+firebase.json
+.firebaserc
 *.onnx
 spectacle_dataset
 images_generated
